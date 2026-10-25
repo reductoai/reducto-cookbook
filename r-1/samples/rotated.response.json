@@ -1,0 +1,39 @@
+{
+  "blocks": [
+    {
+      "type": "Title",
+      "bbox": {
+        "left": 0.112,
+        "top": 0.659,
+        "width": 0.036,
+        "height": 0.285
+      },
+      "content": "ROTATION CHECK"
+    },
+    {
+      "type": "Text",
+      "bbox": {
+        "left": 0.245,
+        "top": 0.607,
+        "width": 0.034,
+        "height": 0.337
+      },
+      "content": "Reference: MAPLE-928"
+    },
+    {
+      "type": "Text",
+      "bbox": {
+        "left": 0.375,
+        "top": 0.636,
+        "width": 0.045,
+        "height": 0.308
+      },
+      "content": "Silver lantern delivery"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 644,
+    "completion_tokens": 125,
+    "total_tokens": 769
+  }
+}

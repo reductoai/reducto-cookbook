@@ -1,0 +1,39 @@
+{
+  "blocks": [
+    {
+      "type": "Title",
+      "bbox": {
+        "left": 0.056,
+        "top": 0.112,
+        "width": 0.284,
+        "height": 0.034
+      },
+      "content": "ORCHID SHIPPING"
+    },
+    {
+      "type": "Text",
+      "bbox": {
+        "left": 0.056,
+        "top": 0.246,
+        "width": 0.356,
+        "height": 0.034
+      },
+      "content": "Reference: ORCHID-742"
+    },
+    {
+      "type": "Text",
+      "bbox": {
+        "left": 0.056,
+        "top": 0.375,
+        "width": 0.525,
+        "height": 0.045
+      },
+      "content": "The blue parcel arrives on Thursday."
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 644,
+    "completion_tokens": 127,
+    "total_tokens": 771
+  }
+}
