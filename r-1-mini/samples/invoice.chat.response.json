@@ -2,7 +2,7 @@
   "id": "chatcmpl-d1f7b70aa5114fc0aec1dbf075186215",
   "object": "chat.completion",
   "created": 1792793498,
-  "model": "r-1",
+  "model": "r-1-mini",
   "choices": [
     {
       "index": 0,

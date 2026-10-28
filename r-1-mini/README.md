@@ -1,8 +1,8 @@
-# r-1
+# r-1 mini
 
-Reducto r-1 is a page parser. You send one page image. The endpoint returns the layout blocks of the page, in reading order. Each block has a type, a box on the page, and its content. Tables come back as HTML.
+Reducto r-1 mini is a page parser. You send one page image. The endpoint returns the layout blocks of the page, in reading order. Each block has a type, a box on the page, and its content. Tables come back as HTML.
 
-This page describes the endpoint contract of version 3 of the r-1 model package on AWS Marketplace.
+This page describes the endpoint contract of version 3 of the r-1 mini model package on AWS Marketplace.
 
 - [Access](#access)
 - [Deploy](#deploy)
@@ -16,11 +16,11 @@ This page describes the endpoint contract of version 3 of the r-1 model package 
 
 ## Access
 
-r-1 is available on AWS Marketplace through a private offer from Reducto.
+r-1 mini is available on AWS Marketplace through a private offer from Reducto.
 
-1. Send Reducto the 12-digit ID of the AWS account that will run r-1. Reducto sends you a private offer link for that account.
+1. Send Reducto the 12-digit ID of the AWS account that will run r-1 mini. Reducto sends you a private offer link for that account.
 2. Sign in to that AWS account, open the link, and accept the offer.
-3. Open **AWS Marketplace > Manage subscriptions**, find r-1, and select **Configure**.
+3. Open **AWS Marketplace > Manage subscriptions**, find r-1 mini, and select **Configure**.
 4. Choose version 3 or later, and a region that offers `ml.g6e.2xlarge` (for example `us-east-2`). Copy the model package ARN.
 
 ## Deploy
@@ -47,7 +47,7 @@ An OpenAI chat-completions request with one `user` message. The message has one 
 
 ```json
 {
-  "model": "r-1",
+  "model": "r-1-mini",
   "messages": [
     {
       "role": "user",
@@ -61,7 +61,7 @@ An OpenAI chat-completions request with one `user` message. The message has one 
 
 Sample: [`samples/invoice.chat.request.json`](samples/invoice.chat.request.json).
 
-r-1 ignores the `model` field and an optional second part of type `text`. The endpoint has no network access, so the image must be inline: remote image URLs do not work.
+r-1 mini ignores the `model` field and an optional second part of type `text`. The endpoint has no network access, so the image must be inline: remote image URLs do not work.
 
 The chat body also accepts `stream: false`, `n: 1`, `user`, `seed`, and `stream_options`. These fields do not change the answer. Streaming (`stream: true`), `n` greater than 1, and tools return 422 `invalid request`.
 
@@ -69,7 +69,7 @@ The chat body also accepts `stream: false`, `n: 1`, `user`, `seed`, and `stream_
 
 | Field | Body | Type | Notes |
 |---|---|---|---|
-| `max_pixels` | both | int | 1 to 6,291,456. Default 3,145,728. r-1 scales a larger image down to this number of pixels before it reads the page. |
+| `max_pixels` | both | int | 1 to 6,291,456. Default 3,145,728. r-1 mini scales a larger image down to this number of pixels before it reads the page. |
 
 ## Response
 
@@ -97,7 +97,7 @@ The full answer is [`samples/invoice.response.json`](samples/invoice.response.js
 
 ### Chat-completions body
 
-An OpenAI `chat.completion` object with `"model": "r-1"`. `choices[0].message.content` holds the same `{"blocks": [...]}` object as a JSON string, without `usage`. The token counts are in the top-level `usage` field. `finish_reason` is always `stop`.
+An OpenAI `chat.completion` object with `"model": "r-1-mini"`. `choices[0].message.content` holds the same `{"blocks": [...]}` object as a JSON string, without `usage`. The token counts are in the top-level `usage` field. `finish_reason` is always `stop`.
 
 The full answer is [`samples/invoice.chat.response.json`](samples/invoice.chat.response.json). To read the blocks in Python:
 
@@ -137,16 +137,16 @@ A blank page can return an empty list or one block.
 | 413 | `request body too large` | Send a smaller image. The full JSON body must be at most 6 MB (6,291,456 bytes). In real time, SageMaker refuses a larger body before it reaches the endpoint. |
 | 415 | `invalid input` | Send a readable PNG or JPEG of at most 25,165,824 pixels. |
 | 400, 413, 422 | `invalid request` | Correct the request body. For example, a required field is missing, or the chat body has a `data:` URL that is not a PNG or JPEG or a field that is not accepted. The page-parse body ignores unknown fields. |
-| 422 | `input could not be processed` | r-1 cannot process this page. Do not retry. See below. |
+| 422 | `input could not be processed` | r-1 mini cannot process this page. Do not retry. See below. |
 | 500, 502 | `inference failed` | Retry at most 2 times, with a delay between attempts. |
 | 503 | `model is warming up` | Wait until the endpoint is ready, then retry. |
 | 504 | `inference timed out` | Retry once. If the page times out again, skip it. |
 
 In real time, SageMaker shows each error from the endpoint as a 424 `ModelError`. The status of the endpoint is in `OriginalStatusCode`, and the body is in `OriginalMessage`.
 
-### A page that r-1 cannot process
+### A page that r-1 mini cannot process
 
-When r-1 cannot process a page, a real-time call returns HTTP 422 with this body:
+When r-1 mini cannot process a page, a real-time call returns HTTP 422 with this body:
 
 ```json
 {"detail": "input could not be processed"}
@@ -167,7 +167,7 @@ Put one JSON request body (either body) in each S3 object. Run a transform job w
 | `BatchStrategy` | `SingleRecord` |
 | `MaxPayloadInMB` | `6` |
 
-Each result is written as `<input>.out`, with the same JSON as the real-time response. Check each `.out` file for `detail` before you read `blocks`. For a chat body, the blocks are in `choices[0].message.content`. A page that r-1 cannot process gives `{"detail": "input could not be processed"}` and does not stop the job.
+Each result is written as `<input>.out`, with the same JSON as the real-time response. Check each `.out` file for `detail` before you read `blocks`. For a chat body, the blocks are in `choices[0].message.content`. A page that r-1 mini cannot process gives `{"detail": "input could not be processed"}` and does not stop the job.
 
 Any other error on a record fails the whole transform job, and that record gets no `.out` file. Examples are an image that is not a readable PNG or JPEG, a body that is not valid, or a timeout. Check each image before you upload it. If a job fails, read its `FailureReason`, and compare the input objects with the `.out` objects to find the pages without output.
 
@@ -180,7 +180,7 @@ Your offer sets the price. A per-request offer bills each real-time call that re
 - One page per request.
 - PNG or JPEG only. Convert other formats, such as PDF or TIFF, to one image for each page before you send them.
 - The JSON body, with the base64 image, must be at most 6 MB.
-- A decoded image must have at most 25,165,824 pixels. r-1 scales the image down to `max_pixels` (default 3,145,728) before it reads the page.
+- A decoded image must have at most 25,165,824 pixels. r-1 mini scales the image down to `max_pixels` (default 3,145,728) before it reads the page.
 - The endpoint returns 504 `inference timed out` when a page takes longer than 55 seconds. SageMaker stops a real-time request after 60 seconds.
 - The endpoint has no network access.
 
