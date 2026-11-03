@@ -2,7 +2,7 @@
 
 Reducto r-1 mini is a page parser. You send one page image. The endpoint returns the layout blocks of the page, in reading order. Each block has a type, a box on the page, and its content. Tables come back as HTML.
 
-This page describes the endpoint contract of version 3 of the r-1 mini model package on AWS Marketplace.
+This page describes the endpoint contract of the Reducto r-1 mini model package on AWS Marketplace.
 
 - [Access](#access)
 - [Deploy](#deploy)
@@ -16,11 +16,17 @@ This page describes the endpoint contract of version 3 of the r-1 mini model pac
 
 ## Access
 
-You subscribe to r-1 mini through Amazon SageMaker on AWS Marketplace. The model package ARN comes from the subscription.
+You subscribe to r-1 mini through Amazon SageMaker on AWS Marketplace. The listing name is **Reducto r-1 mini**. The model package ARN comes from the subscription.
 
-1. Sign in to the AWS account that will run r-1 mini. Find r-1 mini in AWS Marketplace and subscribe to it.
-2. Open **AWS Marketplace > Manage subscriptions**, find r-1 mini, and select **Configure**.
-3. Choose version 3 or later, and a region that offers `ml.g6e.2xlarge` (for example `us-east-2`). Copy the model package ARN.
+1. Sign in to the AWS account that will run r-1 mini. Find Reducto r-1 mini in AWS Marketplace and subscribe to it.
+2. Open **AWS Marketplace > Manage subscriptions**, find Reducto r-1 mini, and select **Configure**.
+3. Choose the latest version, and a region that offers `ml.g6e.2xlarge` (for example `us-east-2`). Copy the model package ARN.
+
+The account and the ARN differ by region. The **Configure** page shows the ARN for each region. The ARN in `us-east-2` is:
+
+```text
+arn:aws:sagemaker:us-east-2:057799348421:model-package/reducto-r-1-mini-v3-1-859cb2fb2c6f348bbbd9fd57966b364c
+```
 
 ## Deploy
 
@@ -185,7 +191,7 @@ Your subscription sets the price. Per-request pricing bills each real-time call 
 
 ## Samples
 
-[`samples`](samples) holds three synthetic pages, request bodies, and example answers of model package version 3 for those pages. The content of an answer can differ in a later version.
+[`samples`](samples) holds three synthetic pages, request bodies, and example answers of the current model package for those pages. The content of an answer can differ in a later version.
 
 | Page | Request | Response |
 |---|---|---|
