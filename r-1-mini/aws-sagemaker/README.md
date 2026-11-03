@@ -7,7 +7,7 @@ This folder shows how to deploy the r-1 mini model package from AWS Marketplace 
 
 ## Prerequisites
 
-- A subscription to r-1 mini through Amazon SageMaker on AWS Marketplace, and the model package ARN. See [Access](../README.md#access).
+- A subscription to Reducto r-1 mini through Amazon SageMaker on AWS Marketplace, and the model package ARN. See [Access](../README.md#access).
 - An IAM execution role for SageMaker. The trust policy must allow `sagemaker.amazonaws.com`. For batch transform, the role must also read the input prefix and write the output prefix in your S3 bucket.
 - Service quota in your region for one `ml.g6e.2xlarge` for endpoint usage, and one for transform job usage.
 - Python 3.9 or later with `boto3`, and AWS credentials that can call SageMaker and S3.
@@ -17,16 +17,18 @@ The commands below use these placeholders. Replace each one with your own value.
 | Placeholder | Value |
 |---|---|
 | `<region>` | The region of your subscription, for example `us-east-2` |
-| `<model-package-arn>` | The model package ARN from **Manage subscriptions > Configure** |
+| `<model-package-arn>` | The model package ARN for your region, from **Manage subscriptions > Reducto r-1 mini > Configure**. In `us-east-2`, the ARN is `arn:aws:sagemaker:us-east-2:057799348421:model-package/reducto-r-1-mini-v3-1-859cb2fb2c6f348bbbd9fd57966b364c`. |
 | `<execution-role-arn>` | The ARN of your SageMaker execution role |
 | `<model-name>`, `<endpoint-name>`, `<transform-job-name>` | Names that you choose |
 | `<bucket>` | An S3 bucket in the same region |
 
 ## 1. Subscribe
 
-1. Sign in to the AWS account that will run r-1 mini. Find r-1 mini in AWS Marketplace and subscribe to it.
-2. Open **AWS Marketplace > Manage subscriptions**, find r-1 mini, and select **Configure**.
+1. Sign in to the AWS account that will run r-1 mini. Find Reducto r-1 mini in AWS Marketplace and subscribe to it.
+2. Open **AWS Marketplace > Manage subscriptions**, find Reducto r-1 mini, and select **Configure**.
 3. Choose version 3 or later, and a region that offers `ml.g6e.2xlarge`. Copy the model package ARN.
+
+The account and the ARN differ by region. Copy the ARN for your region from the **Configure** page.
 
 ## 2. Create the model
 
@@ -130,4 +132,4 @@ aws sagemaker delete-model --region <region> --model-name <model-name>
 
 Delete the batch input and output objects in S3 if you do not need them.
 
-To unsubscribe, delete all endpoints and models from the model package first. Then open **AWS Marketplace > Manage subscriptions** and cancel the r-1 mini subscription.
+To unsubscribe, delete all endpoints and models from the model package first. Then open **AWS Marketplace > Manage subscriptions** and cancel the Reducto r-1 mini subscription.
