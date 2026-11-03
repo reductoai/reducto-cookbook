@@ -3,9 +3,9 @@
     {
       "type": "Title",
       "bbox": {
-        "left": 0.056,
+        "left": 0.057,
         "top": 0.111,
-        "width": 0.256,
+        "width": 0.255,
         "height": 0.036
       },
       "content": "INVOICE INV-314"
@@ -16,7 +16,7 @@
         "left": 0.051,
         "top": 0.235,
         "width": 0.536,
-        "height": 0.448
+        "height": 0.45
       },
       "content": "<table><tr><th>Item</th><th>Quantity</th><th>Amount</th></tr><tr><td>Cedar bolts</td><td>4</td><td>28.00</td></tr><tr><td>Maple washers</td><td>2</td><td>12.00</td></tr><tr><td>Total</td><td></td><td>40.00</td></tr></table>"
     }

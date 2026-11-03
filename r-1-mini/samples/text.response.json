@@ -6,7 +6,7 @@
         "left": 0.056,
         "top": 0.112,
         "width": 0.284,
-        "height": 0.034
+        "height": 0.035
       },
       "content": "ORCHID SHIPPING"
     },
@@ -14,19 +14,19 @@
       "type": "Text",
       "bbox": {
         "left": 0.056,
-        "top": 0.246,
+        "top": 0.245,
         "width": 0.356,
-        "height": 0.034
+        "height": 0.035
       },
       "content": "Reference: ORCHID-742"
     },
     {
       "type": "Text",
       "bbox": {
-        "left": 0.056,
-        "top": 0.375,
-        "width": 0.525,
-        "height": 0.045
+        "left": 0.055,
+        "top": 0.373,
+        "width": 0.526,
+        "height": 0.047
       },
       "content": "The blue parcel arrives on Thursday."
     }

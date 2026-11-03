@@ -3,20 +3,20 @@
     {
       "type": "Title",
       "bbox": {
-        "left": 0.112,
+        "left": 0.11,
         "top": 0.659,
-        "width": 0.036,
-        "height": 0.285
+        "width": 0.038,
+        "height": 0.284
       },
       "content": "ROTATION CHECK"
     },
     {
       "type": "Text",
       "bbox": {
-        "left": 0.245,
+        "left": 0.244,
         "top": 0.607,
-        "width": 0.034,
-        "height": 0.337
+        "width": 0.036,
+        "height": 0.336
       },
       "content": "Reference: MAPLE-928"
     },

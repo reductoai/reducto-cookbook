@@ -1,14 +1,14 @@
 {
-  "id": "chatcmpl-d1f7b70aa5114fc0aec1dbf075186215",
+  "id": "chatcmpl-3e5a88f06719492d9dfe5ee918f5bc32",
   "object": "chat.completion",
-  "created": 1792793498,
+  "created": 1793669360,
   "model": "r-1-mini",
   "choices": [
     {
       "index": 0,
       "message": {
         "role": "assistant",
-        "content": "{\"blocks\":[{\"type\":\"Title\",\"bbox\":{\"left\":0.056,\"top\":0.111,\"width\":0.256,\"height\":0.036},\"content\":\"INVOICE INV-314\"},{\"type\":\"Table\",\"bbox\":{\"left\":0.051,\"top\":0.235,\"width\":0.536,\"height\":0.448},\"content\":\"<table><tr><th>Item</th><th>Quantity</th><th>Amount</th></tr><tr><td>Cedar bolts</td><td>4</td><td>28.00</td></tr><tr><td>Maple washers</td><td>2</td><td>12.00</td></tr><tr><td>Total</td><td></td><td>40.00</td></tr></table>\"}]}"
+        "content": "{\"blocks\":[{\"type\":\"Title\",\"bbox\":{\"left\":0.057,\"top\":0.111,\"width\":0.255,\"height\":0.036},\"content\":\"INVOICE INV-314\"},{\"type\":\"Table\",\"bbox\":{\"left\":0.051,\"top\":0.235,\"width\":0.536,\"height\":0.45},\"content\":\"<table><tr><th>Item</th><th>Quantity</th><th>Amount</th></tr><tr><td>Cedar bolts</td><td>4</td><td>28.00</td></tr><tr><td>Maple washers</td><td>2</td><td>12.00</td></tr><tr><td>Total</td><td></td><td>40.00</td></tr></table>\"}]}"
       },
       "finish_reason": "stop"
     }
