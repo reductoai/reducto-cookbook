@@ -18,7 +18,7 @@ This page describes the endpoint contract of the Reducto r-1 mini model package 
 
 You subscribe to r-1 mini through Amazon SageMaker on AWS Marketplace. The listing name is **Reducto r-1 mini**. The model package ARN comes from the subscription.
 
-1. Sign in to the AWS account that will run r-1 mini. Find Reducto r-1 mini in AWS Marketplace and subscribe to it.
+1. Sign in to the AWS account that will run r-1 mini. Find [Reducto r-1 mini](https://aws.amazon.com/marketplace/pp/prodview-bn3jwyvp6nqje) in AWS Marketplace and subscribe to it.
 2. Open **AWS Marketplace > Manage subscriptions**, find Reducto r-1 mini, and select **Configure**.
 3. Choose the latest version, and a region that offers `ml.g6e.2xlarge` (for example `us-east-2`). Copy the model package ARN.
 
