@@ -16,12 +16,11 @@ This page describes the endpoint contract of version 3 of the r-1 mini model pac
 
 ## Access
 
-r-1 mini is available on AWS Marketplace through a private offer from Reducto.
+You subscribe to r-1 mini through Amazon SageMaker on AWS Marketplace. The model package ARN comes from the subscription.
 
-1. Send Reducto the 12-digit ID of the AWS account that will run r-1 mini. Reducto sends you a private offer link for that account.
-2. Sign in to that AWS account, open the link, and accept the offer.
-3. Open **AWS Marketplace > Manage subscriptions**, find r-1 mini, and select **Configure**.
-4. Choose version 3 or later, and a region that offers `ml.g6e.2xlarge` (for example `us-east-2`). Copy the model package ARN.
+1. Sign in to the AWS account that will run r-1 mini. Find r-1 mini in AWS Marketplace and subscribe to it.
+2. Open **AWS Marketplace > Manage subscriptions**, find r-1 mini, and select **Configure**.
+3. Choose version 3 or later, and a region that offers `ml.g6e.2xlarge` (for example `us-east-2`). Copy the model package ARN.
 
 ## Deploy
 
@@ -80,12 +79,12 @@ The chat body also accepts `stream: false`, `n: 1`, `user`, `seed`, and `stream_
   "blocks": [
     {
       "type": "Title",
-      "bbox": {"left": 0.056, "top": 0.111, "width": 0.256, "height": 0.036},
+      "bbox": {"left": 0.057, "top": 0.111, "width": 0.255, "height": 0.036},
       "content": "INVOICE INV-314"
     },
     {
       "type": "Table",
-      "bbox": {"left": 0.051, "top": 0.235, "width": 0.536, "height": 0.448},
+      "bbox": {"left": 0.051, "top": 0.235, "width": 0.536, "height": 0.45},
       "content": "<table><tr><th>Item</th><th>Quantity</th><th>Amount</th></tr>...</table>"
     }
   ],
@@ -173,7 +172,7 @@ Any other error on a record fails the whole transform job, and that record gets 
 
 ## Billing
 
-Your offer sets the price. A per-request offer bills each real-time call that returns a 2XX response, and does not bill other responses, such as the 422. Batch transform bills per instance hour. AWS bills the endpoint instance while the endpoint exists.
+Your subscription sets the price. Per-request pricing bills each real-time call that returns a 2XX response, and does not bill other responses, such as the 422. Batch transform bills per instance hour. AWS bills the endpoint instance while the endpoint exists.
 
 ## Limits
 

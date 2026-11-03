@@ -7,7 +7,7 @@ This folder shows how to deploy the r-1 mini model package from AWS Marketplace 
 
 ## Prerequisites
 
-- An accepted private offer for r-1 mini from Reducto, and the model package ARN. See [Access](../README.md#access).
+- A subscription to r-1 mini through Amazon SageMaker on AWS Marketplace, and the model package ARN. See [Access](../README.md#access).
 - An IAM execution role for SageMaker. The trust policy must allow `sagemaker.amazonaws.com`. For batch transform, the role must also read the input prefix and write the output prefix in your S3 bucket.
 - Service quota in your region for one `ml.g6e.2xlarge` for endpoint usage, and one for transform job usage.
 - Python 3.9 or later with `boto3`, and AWS credentials that can call SageMaker and S3.
@@ -24,10 +24,9 @@ The commands below use these placeholders. Replace each one with your own value.
 
 ## 1. Subscribe
 
-1. Send Reducto the 12-digit ID of the AWS account that will run r-1 mini. Reducto sends you a private offer link for that account.
-2. Sign in to that AWS account, open the link, and accept the offer.
-3. Open **AWS Marketplace > Manage subscriptions**, find r-1 mini, and select **Configure**.
-4. Choose version 3 or later, and a region that offers `ml.g6e.2xlarge`. Copy the model package ARN.
+1. Sign in to the AWS account that will run r-1 mini. Find r-1 mini in AWS Marketplace and subscribe to it.
+2. Open **AWS Marketplace > Manage subscriptions**, find r-1 mini, and select **Configure**.
+3. Choose version 3 or later, and a region that offers `ml.g6e.2xlarge`. Copy the model package ARN.
 
 ## 2. Create the model
 
@@ -105,7 +104,7 @@ When r-1 mini cannot process a page, `invoke_endpoint` raises a `ModelError` wit
      --model-name <model-name> \
      --batch-strategy SingleRecord \
      --max-payload-in-mb 6 \
-     --max-concurrent-transforms 1 \
+     --max-concurrent-transforms 8 \
      --transform-input '{"DataSource": {"S3DataSource": {"S3DataType": "S3Prefix", "S3Uri": "s3://<bucket>/r-1-mini/input/"}}, "ContentType": "application/json", "SplitType": "None"}' \
      --transform-output '{"S3OutputPath": "s3://<bucket>/r-1-mini/output/", "Accept": "application/json", "AssembleWith": "None"}' \
      --transform-resources InstanceType=ml.g6e.2xlarge,InstanceCount=1
