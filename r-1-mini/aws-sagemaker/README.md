@@ -26,7 +26,7 @@ The commands below use these placeholders. Replace each one with your own value.
 
 1. Sign in to the AWS account that will run r-1 mini. Find Reducto r-1 mini in AWS Marketplace and subscribe to it.
 2. Open **AWS Marketplace > Manage subscriptions**, find Reducto r-1 mini, and select **Configure**.
-3. Choose version 3 or later, and a region that offers `ml.g6e.2xlarge`. Copy the model package ARN.
+3. Choose the latest version, and a region that offers `ml.g6e.2xlarge`. Copy the model package ARN.
 
 The account and the ARN differ by region. Copy the ARN for your region from the **Configure** page.
 
